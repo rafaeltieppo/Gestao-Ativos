@@ -7,6 +7,7 @@ const AtivosList = () => {
     const [ativos, setAtivos] = useState([]);
     const [ativoSelecionado, setAtivoSelecionado] = useState(null);
     const [showForm, setShowForm] = useState(false);
+    const [filtro, setFiltro] = useState('');
 
     const fetchAtivos = () => {
         fetch(API_URL)
@@ -20,7 +21,7 @@ const AtivosList = () => {
     }, []);
 
     const handleAdd = () => {
-        setAtivoSelecionado(null); // limpar form
+        setAtivoSelecionado(null);
         setShowForm(true);
     };
 
@@ -43,9 +44,14 @@ const AtivosList = () => {
             .catch(err => console.error(err));
     };
 
+    const ativosFiltrados = ativos.filter(a =>
+        a.codigo.toString().includes(filtro) ||
+        a.nome.toLowerCase().includes(filtro.toLowerCase()) ||
+        a.descricao.toLowerCase().includes(filtro.toLowerCase())
+    );
+
     return (
         <div className="container">
-
             {!showForm && (
                 <button className="btn btn-success mb-4 mt-4" onClick={handleAdd}>
                     Cadastrar
@@ -67,6 +73,14 @@ const AtivosList = () => {
                 />
             )}
 
+            <input
+                type="text"
+                className="form-control mb-3"
+                placeholder="Buscar por código, nome ou descrição..."
+                value={filtro}
+                onChange={e => setFiltro(e.target.value)}
+            />
+
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -77,8 +91,8 @@ const AtivosList = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {ativos.length > 0 ? (
-                    ativos.map(a => (
+                {ativosFiltrados.length > 0 ? (
+                    ativosFiltrados.map(a => (
                         <tr key={a.id}>
                             <td>{a.codigo}</td>
                             <td>{a.nome}</td>
@@ -101,7 +115,7 @@ const AtivosList = () => {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan="5">Nenhum ativo encontrado</td>
+                        <td colSpan="4">Nenhum ativo encontrado</td>
                     </tr>
                 )}
                 </tbody>
