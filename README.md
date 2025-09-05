@@ -39,8 +39,3 @@ Este projeto tem como objetivo simplificar e modernizar o controle de ferramenta
 - Botões para ações rápidas
 - Tabelas organizadas para facilitar o gerenciamento
 
-## 📦 Como Executar Localmente
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
