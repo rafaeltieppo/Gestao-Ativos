@@ -64,7 +64,7 @@ const MovimentacaoForm = ({ onNovaMovimentacao, movimento, onCancel }) => {
             status: isEdit ? status : 'pendente'
         };
 
-        fetch(`http://10.0.0.214/gestao-ativos/api/movimentacoes.php`, {
+        fetch(`http://localhost/gestao-ativos/api/movimentacoes.php`, {
             method: isEdit ? 'PUT' : 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
