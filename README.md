@@ -1,8 +1,8 @@
-# 🧩 Sistema Web de Gestão de Ativos
+# Sistema Web de Gestão de Ativos
 
 Este projeto tem como objetivo simplificar e modernizar o controle de ferramentas, máquinas e equipamentos dentro de uma empresa, oferecendo rastreabilidade completa dos ativos — desde a saída até o retorno ao estoque.
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Frontend**: React  
 - **Backend**: PHP  
